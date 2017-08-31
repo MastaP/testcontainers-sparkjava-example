@@ -6,6 +6,7 @@ import feign.httpclient.ApacheHttpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testcontainers.containers.BindMode;
+import org.testcontainers.containers.wait.WaitStrategy;
 
 public class SparkTestApp extends GroovyTestContainer<SparkTestApp> {
     private static final Logger logger = LoggerFactory.getLogger(SparkTestApp.class);
@@ -22,6 +23,11 @@ public class SparkTestApp extends GroovyTestContainer<SparkTestApp> {
         withExposedPorts(PORT);
         withClasspathResourceMapping(fileName, "/app/test.groovy", BindMode.READ_ONLY);
         withCommand("/opt/groovy/bin/groovy /app/test.groovy");
+    }
+
+    public SparkTestApp withWaitStrategy(WaitStrategy ws) {
+        setWaitStrategy(ws);
+        return this;
     }
 
     @Override
