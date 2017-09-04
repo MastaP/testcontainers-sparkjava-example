@@ -25,9 +25,9 @@ public class GroovyTestContainer<SELF extends GroovyTestContainer<SELF>> extends
 
         try {
             // Cache Grapes
-            String canonicalPath = new File(System.getProperty("user.home") + "/.groovy").getCanonicalPath();
+            String canonicalPath = new File(System.getProperty("user.home") + "/.groovy/grapes").getCanonicalPath();
             logger.info("Adding system binding: " + canonicalPath);
-            addFileSystemBind(canonicalPath, "/home/groovy/.groovy", BindMode.READ_WRITE);
+            addFileSystemBind(canonicalPath, "/home/groovy/.groovy/grapes", BindMode.READ_WRITE);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
