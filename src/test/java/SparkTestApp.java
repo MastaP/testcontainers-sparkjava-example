@@ -22,7 +22,6 @@ public class SparkTestApp extends GroovyTestContainer<SparkTestApp> {
     public SparkTestApp(String fileName) {
         withExposedPorts(PORT);
         withClasspathResourceMapping(fileName, "/app/test.groovy", BindMode.READ_ONLY);
-        withPrivilegedMode(true);
         withCommand("/opt/groovy/bin/groovy /app/test.groovy");
     }
 
